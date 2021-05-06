@@ -35,5 +35,7 @@ int main(){
     int length = 10;
     InsertSort(a,10);
     OutPut(a);
+    system ("pause");
+    return 0;
 
 }

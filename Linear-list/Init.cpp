@@ -287,22 +287,22 @@ SqList Reverse_01(SqList &L){
 }
 
 //9
-SqList SearchExchangeInsert(ElemType A[],ElemType x){
-    int low =0,high = n-1;mid;
-    while(low<=high){
-        mid=(low+high)/2;
-        if(A[mid]==x) break;
-        else if(A[mid] < x ) low = mid+1;
-        else high = mid-1;
-    }
-    if(A[mid] == x && mid!=n-1){
-        int t = A[mid]; A[mid] = A[mid+1]; A[mid+1] = t;
-    }
-    if(low > high){
-        for( i = n-1;i>high;i--) A[i-1]=A[i];
-        A[i+1] = x;
-    }
-}
+//SqList SearchExchangeInsert(ElemType A[],ElemType x){
+//     int low =0,high = n-1;mid;
+//     while(low<=high){
+//         mid=(low+high)/2;
+//         if(A[mid]==x) break;
+//         else if(A[mid] < x ) low = mid+1;
+//         else high = mid-1;
+//     }
+//     if(A[mid] == x && mid!=n-1){
+//         int t = A[mid]; A[mid] = A[mid+1]; A[mid+1] = t;
+//     }
+//     if(low > high){
+//         for( i = n-1;i>high;i--) A[i-1]=A[i];
+//         A[i+1] = x;
+//     }
+// }
 
 
 int main(){
@@ -356,5 +356,5 @@ int main(){
 
     OutPut(L);
 
-    return 0;
+    return 1;
 }
