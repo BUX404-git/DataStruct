@@ -262,19 +262,19 @@ void R_Print_2(LinkList &L){//µÝ¹é Í·½áµã²»Îª¿Õ£¬×îºóÒ»¸öÊä³öµÄÍ·½ÚµãdataÃ»ÓÐÉèÖ
 
 //4
 LinkList Delete_Min(LinkList &L){
-		LNode *p=L->next,*pre=L;
-		LNode *minp=p,*preminp=pre;
-		while(p != nullptr){//±éÀúÁ´±í
-			if(p->data < minp->data){//½«minpÖ¸ÕëÖ¸Ïò×îÐ¡½Úµã
-				minp = p;
-				preminp = pre;
-			}
-				pre=p;//¼ÌÐø±éÀú
-				p=p->next;
-			
+		LNode *pre = L;
+		LNode *p=pre->next;
+		while(p->next != nullptr){
+			if(p->next->data < pre->next->data)
+				pre = p;//preÖ¸ÕëÖ¸Ïò×îÐ¡Öµ½áµãµÄÇ°Çý½Úµã
+			p=p->next;//¼ÌÐø±éÀú
 		}
-		preminp->next=minp->next;
-		free(minp);
+		cout<<pre->next->data<<" ";//Êä³ö×îÐ¡Öµ½áµãµÄÊý¾Ý
+		LNode *u;
+		u=pre->next;
+				pre->next = u->next;
+
+		free(u);
 		return L;
 	}
 
@@ -606,7 +606,7 @@ int Sysmmetry(DLinklist L){
 	while(p != q && q->next != p)//Á´±íÎªÅ¼ÊýÊ±,µ±Ñ­»·µ½qµÈÓÚpÊ±½áÊø»òÁ´±íÎªÆæÊýÊ±,µ±Ñ­»·µ½qµÄÏÂÒ»¸ö½ÚµãµÈÓÚpÊ±,Ñ­»·½áÊø
 		if(p->data == q->data){//ËùÖ¸µÄ½áµãÖµÏàÍ¬Ôò¼ÌÐø±È½Ï
 			p=p->next;
-			q=q->prior
+			q=q->prior;
 		}
 		else//µ±ÓÐÒ»¸ö²»¶Ô³ÆÊ±,Ñ­»·½áÊø
 			return 0;
@@ -657,9 +657,9 @@ void Del_All(LinkList &L){//Ñ­»·µ¥Á´±í
 
 
 int main(){
-    // LinkList L = NULL;
-    // L = CreatLinkListTail(L);//³õÊ¼»¯Á´±í
-    // OutPut(L);
+    LinkList L = NULL;
+    L = CreatLinkListTail(L);//³õÊ¼»¯Á´±í
+    OutPut(L);
 
 	//Êä³öÐòºÅÎªxµÄ½áµãµÄÖµ
 	// GetElem(L);
@@ -688,7 +688,7 @@ int main(){
 	// R_Print_2(L);
 
     //4
-	// Delete_Min(L);
+	Delete_Min(L);
 	
 	//5
 	// Inversion_1(L);
@@ -752,7 +752,7 @@ int main(){
 	// LinkList q = Union(L1,L2);
 	// OutPut(q);
 
-	// OutPut(L);
+	OutPut(L);
 
 	system ("pause");
     return 0;
